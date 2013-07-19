@@ -12,7 +12,7 @@ public class ThreeDMorph
     static final int nz = 120;
 
     static void morph(double[] a, double f) {
-        double PI2nx = Math.PI * (8.0 / nx);
+        double PI2nx = Math.PI * 8.0 / nx;
         double f30 = -(50 * Math.sin(f*Math.PI*2));
 
         for (int i = 0; i < nz; ++i) {
@@ -28,7 +28,7 @@ public class ThreeDMorph
             a[i] = 0.0;
 
         for (int i = 0; i < loops; ++i)
-            morph(a, i/loops);
+            morph(a, i/(double)loops);
 
         double testOutput = 0.0;
         for (int i = 0; i < nx; i++) {

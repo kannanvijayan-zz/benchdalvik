@@ -39,16 +39,36 @@ function morph(a, f) {
     }
 }
 
-    
-var a = Array()
-for (var i=0; i < nx*nz*3; ++i) 
-    a[i] = 0
 
-for (var i = 0; i < loops; ++i) {
-    morph(a, i/loops)
+function runMorph() {    
+    var a = Array()
+    for (var i=0; i < nx*nz*3; ++i) {
+        a[i] = 0
+    }
+
+    for (var i = 0; i < loops; ++i) {
+        morph(a, i/loops)
+    }
+
+    var testOutput = 0;
+    for (var i = 0; i < nx; i++) {
+        //print("  Adding " + a[3*(i*nx+i)+1]);
+        testOutput += a[3*(i*nx+i)+1];
+    }
+    a = null;
+    return testOutput;
 }
 
-testOutput = 0;
-for (var i = 0; i < nx; i++)
-    testOutput += a[3*(i*nx+i)+1];
-a = null;
+function main() {
+    var count = 0;
+    var d1 = new Date();
+    for (var i = 0; i < 100; i++) {
+        var result = runMorph();
+        //print("Count " + i + " = " + result);
+        count += result;
+    }
+    var d2 = new Date();
+    print("JS Time: " + ((d2 - d1) / 1000.0) + " (count=" + count + ")");
+}
+
+main();

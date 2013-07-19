@@ -16,7 +16,7 @@ static const int nx = 120;
 static const int nz = 120;
 
 void morph(double *a, double f) {
-    double PI2nx = M_PI * (8.0 / nx);
+    double PI2nx = M_PI * 8.0 / nx;
     double f30 = -(50 * sin(f*M_PI*2));
 
     for (int i = 0; i < nz; ++i) {
@@ -28,11 +28,13 @@ void morph(double *a, double f) {
 
 double runMorph() {
     double *a = (double *) malloc(sizeof(double) * (nx*nz*3));
-    for (int i = 0; i < (nx*nz*3); ++i)
+    for (int i = 0; i < (nx*nz*3); ++i) {
         a[i] = 0.0;
+    }
 
-    for (int i = 0; i < loops; ++i)
-        morph(a, i/loops);
+    for (int i = 0; i < loops; ++i) {
+        morph(a, i/(double)loops);
+    }
 
     double testOutput = 0.0;
     for (int i = 0; i < nx; i++) {
@@ -46,7 +48,8 @@ int main() {
     double count = 0;
     double d1 = DoubleTime();
     for (int i = 0; i < 100; i++) {
-        count += runMorph();
+        double result = runMorph();
+        count += result;
     }
     double d2 = DoubleTime();
     fprintf(stderr, "CXX Time: %lf  (count=%lf)\n", (d2 - d1), count);
