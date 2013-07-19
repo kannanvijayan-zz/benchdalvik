@@ -25,9 +25,24 @@ function partial(n){
         a8 += alt/k;
         a9 += alt/(2*k -1);
     }
+    return a1 + k2;
 }
 
-for (var i = 1024; i <= 16384; i *= 2) {
-    partial(i);
+function runPartialSums() {
+    var result = 0;
+    for (var i = 1024; i <= 16384; i *= 2) {
+        result += partial(i);
+    }
+    return result;
 }
 
+function main() {
+    var count = 0;
+    var d1 = new Date();
+    for (var i = 0; i < 1000; i++)
+        count += runPartialSums();
+    var d2 = new Date();
+    print("JS Time: " + ((d2 - d1) / 1000.0) + " (count=" + count + ")");
+}
+
+main();
