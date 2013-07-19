@@ -46,6 +46,21 @@ function spectralnorm(n) {
   return Math.sqrt(vBv/vv);
 }
 
-for (var i = 6; i <= 48; i *= 2) {
-    spectralnorm(i);
+function runSpectralNorm() {
+    var result = 0;
+    for (var i = 6; i <= 48; i *= 2) {
+        result += spectralnorm(i);
+    }
+    return result;
 }
+
+function main() {
+    var count = 0;
+    var d1 = new Date();
+    for (var i = 0; i < 2000; i++)
+        count += runSpectralNorm();
+    var d2 = new Date();
+    print("JS Time: " + ((d2 - d1) / 1000.0) + " (count=" + count + ")");
+}
+
+main();

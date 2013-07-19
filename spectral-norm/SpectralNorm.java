@@ -3,8 +3,8 @@ import java.util.Date;
 
 public class SpectralNorm {
 
-    static int A(int i, int j) {
-      return 1/((i+j)*(i+j+1)/2+i+1);
+    static double A(int i, int j) {
+      return ((double)1)/((i+j)*(i+j+1)/2+i+1);
     }
 
     static void Au(double[] u, double[] v) {

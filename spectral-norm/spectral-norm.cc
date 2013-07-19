@@ -11,8 +11,8 @@ double DoubleTime() {
     return (double)tv.tv_sec + (((double)tv.tv_usec) / 1000000);
 }
 
-int A(int i, int j) {
-  return 1/((i+j)*(i+j+1)/2+i+1);
+double A(int i, int j) {
+  return ((double)1.0)/((i+j)*(i+j+1)/2+i+1);
 }
 
 void Au(double *u, double *v, int length) {
