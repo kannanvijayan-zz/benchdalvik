@@ -151,19 +151,32 @@ NBodySystem.prototype.energy = function(){
    return e;
 }
 
-var ret;
+var ret = 0.0;
+function runNbody() {
 
-for ( var n = 3; n <= 24; n *= 2 ) {
-    (function(){
-        var bodies = new NBodySystem( Array(
-           Sun(),Jupiter(),Saturn(),Uranus(),Neptune()
-        ));
-        var max = n * 100;
-        
-        ret = bodies.energy();
-        for (var i=0; i<max; i++){
-            bodies.advance(0.01);
-        }
-        ret = bodies.energy();
-    })();
+    for ( var n = 3; n <= 24; n *= 2 ) {
+        (function(){
+            var bodies = new NBodySystem( Array(
+               Sun(),Jupiter(),Saturn(),Uranus(),Neptune()
+            ));
+            var max = n * 100;
+
+            ret += bodies.energy();
+            for (var i=0; i<max; i++){
+                bodies.advance(0.01);
+            }
+            ret += bodies.energy();
+        })();
+    }
 }
+
+function main() {
+    var count = 0;
+    var d1 = new Date();
+    for (var i = 0; i < 1000; i++)
+        runNbody();
+    var d2 = new Date();
+    print("JS Time: " + ((d2 - d1) / 1000.0) + " (count=" + ret + ")");
+}
+
+main();

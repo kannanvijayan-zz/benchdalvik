@@ -91,7 +91,6 @@ public class NBody
 
     static class NBodySystem {
         Body[] bodies;
-        int nbodies;
 
         NBodySystem(Body[] bodies)
         {
@@ -146,7 +145,7 @@ public class NBody
         double energy() {
            double dx, dy, dz, distance;
            double e = 0.0;
-           int size = nbodies;
+           int size = bodies.length;
 
            for (int i=0; i<size; i++) {
               Body bodyi = this.bodies[i];

@@ -179,7 +179,7 @@ struct NBodySystem {
 };
 
 
-volatile double ret;
+volatile double ret = 0.0;
 
 void runBodies() {
     for ( int n = 3; n <= 24; n *= 2 ) {
