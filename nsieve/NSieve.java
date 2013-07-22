@@ -37,7 +37,7 @@ public class NSieve
     public static void main(String[] args) {
         Date d1 = new Date();
         int count = 0;
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 100; i++)
             count += sieve();
         Date d2 = new Date();
         System.out.println("Java Time: " + ((d2.getTime() - d1.getTime()) / 1000.0) +

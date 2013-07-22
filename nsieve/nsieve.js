@@ -40,7 +40,7 @@ function sieve() {
 function main() {
     var count = 0;
     var d1 = new Date();
-    for (var i = 0; i < 1000; i++)
+    for (var i = 0; i < 100; i++)
         count += sieve();
     var d2 = new Date();
     print("JS Time: " + ((d2 - d1) / 1000.0) + " (count=" + count + ")");

@@ -47,7 +47,7 @@ public class PartialSums
     public static void main(String[] args) {
         double count = 0;
         Date d1 = new Date();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 100; i++)
             count += runPartial();
         Date d2 = new Date();
         System.out.println("Java Time: " + ((d2.getTime() - d1.getTime()) / 1000.0) +

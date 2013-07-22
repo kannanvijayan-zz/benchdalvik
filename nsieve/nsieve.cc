@@ -45,7 +45,7 @@ int sieve() {
 int main() {
     int count = 0;
     double d1 = DoubleTime();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 100; i++) {
         count += sieve();
     }
     double d2 = DoubleTime();

@@ -55,7 +55,7 @@ double run_partial() {
 int main() {
     double count = 0;
     double d1 = DoubleTime();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 100; i++) {
         count += run_partial();
     }
     double d2 = DoubleTime();

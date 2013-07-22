@@ -78,8 +78,20 @@ function fastaRandom(n, table) {
 
 var ret;
 
-var count = 7;
-ret = fastaRepeat(2*count*100000, ALU);
-ret = fastaRandom(3*count*1000, IUB);
-ret = fastaRandom(5*count*1000, HomoSap);
+function runFasta() {
+    var count = 7;
+    fastaRepeat(2*count*100000, ALU);
+    fastaRandom(3*count*1000, IUB);
+    fastaRandom(5*count*1000, HomoSap);
+}
 
+function main() {
+    var d1 = Date.now();
+    for (int i = 0; i < 1000; i++) {
+        runFasta();
+    }
+    var d2 = Date.now();
+    print("JS TIME: " + ((d2 - d1)/1000) + " (count=" + ret + ")");
+}
+
+main();

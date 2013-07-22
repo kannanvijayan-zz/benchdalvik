@@ -125,7 +125,7 @@ int main() {
     InitializeIUB();
     InitializeHomoSap();
     double d1 = DoubleTime();
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         runFasta();
     }
     double d2 = DoubleTime();
