@@ -65,7 +65,7 @@ public class SpectralNorm {
     public static void main(String[] args) {
         double count = 0;
         Date d1 = new Date();
-        for (int i = 0; i < 2000; i++)
+        for (int i = 0; i < 500; i++)
             count += runSpectralNorm();
         Date d2 = new Date();
         System.out.println("Java Time: " + ((d2.getTime() - d1.getTime()) / 1000.0) +

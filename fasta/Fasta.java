@@ -1,6 +1,6 @@
 
 import java.util.Date;
-import java.util.TreeMap;
+import java.util.HashMap;
 import java.util.Vector;
 
 public class Fasta
@@ -24,7 +24,7 @@ public class Fasta
       "AGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCC" +
       "AGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA";
 
-    static TreeMap<Character, Double> IUB = new TreeMap<Character, Double>();
+    static HashMap<Character, Double> IUB = new HashMap<Character, Double>();
     static void InitializeIUB() {
         IUB.put('a', 0.27);
         IUB.put('c', 0.12);
@@ -43,7 +43,7 @@ public class Fasta
         IUB.put('Y', 0.02);
     }
 
-    static TreeMap<Character, Double> HomoSap = new TreeMap<Character, Double>();
+    static HashMap<Character, Double> HomoSap = new HashMap<Character, Double>();
     static void InitializeHomoSap() {
         HomoSap.put('a', 0.3029549426680);
         HomoSap.put('c', 0.1979883004921);
@@ -51,7 +51,7 @@ public class Fasta
         HomoSap.put('t', 0.3015094502008);
     }
 
-    static void makeCumulative(TreeMap<Character, Double> table) {
+    static void makeCumulative(HashMap<Character, Double> table) {
         char last = '\u0000';
         for (Character ch : table.keySet()) {
             char c = ch.charValue();
@@ -81,7 +81,7 @@ public class Fasta
         }
     }
 
-    static void fastaRandom(int n, TreeMap<Character, Double> table) {
+    static void fastaRandom(int n, HashMap<Character, Double> table) {
         char[] line = new char[60];
         makeCumulative(table);
         while (n>0) {
@@ -112,7 +112,7 @@ public class Fasta
         InitializeIUB();
         InitializeHomoSap();
         Date d1 = new Date();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 10; i++)
             runFasta();
         Date d2 = new Date();
         System.out.println("Java Time: " + ((d2.getTime() - d1.getTime()) / 1000.0) +

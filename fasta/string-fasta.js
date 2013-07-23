@@ -87,7 +87,7 @@ function runFasta() {
 
 function main() {
     var d1 = Date.now();
-    for (int i = 0; i < 1000; i++) {
+    for (var i = 0; i < 10; i++) {
         runFasta();
     }
     var d2 = Date.now();

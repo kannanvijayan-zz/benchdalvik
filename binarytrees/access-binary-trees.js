@@ -27,23 +27,22 @@ function bottomUpTree(item,depth){
 }
 
 var ret;
-var check;
+var check = 0;
 function runBinaryTrees() {
     for ( var n = 4; n <= 7; n += 1 ) {
         var minDepth = 4;
         var maxDepth = Math.max(minDepth + 2, n);
         var stretchDepth = maxDepth + 1;
         
-        check = bottomUpTree(0,stretchDepth).itemCheck();
+        check += bottomUpTree(0,stretchDepth).itemCheck();
         
         var longLivedTree = bottomUpTree(0,maxDepth);
         for (var depth=minDepth; depth<=maxDepth; depth+=2){
             var iterations = 1 << (maxDepth - depth + minDepth);
 
-            check = 0;
             for (var i=1; i<=iterations; i++){
                 check += bottomUpTree(i,depth).itemCheck();
-                check += bottomUpTree(-i,depth).itemCheck();
+                check += bottomUpTree(i,depth).itemCheck();
             }
         }
 
@@ -53,7 +52,7 @@ function runBinaryTrees() {
 
 function main() {
     var d1 = Date.now();
-    for (int i = 0; i < 1000; i++)
+    for (var i = 0; i < 100; i++)
         runBinaryTrees();
     var d2 = Date.now();
     print("JS time: " + ((d2 - d1)/1000.0) + " (count=" + check + ")");

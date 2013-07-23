@@ -48,7 +48,6 @@ public class BinaryTrees
             for (int depth=minDepth; depth<=maxDepth; depth+=2){
                 int iterations = 1 << (maxDepth - depth + minDepth);
 
-                check = 0;
                 for (int i=1; i<=iterations; i++){
                     TreeNode t1 = bottomUpTree(i,depth);
                     check += t1.itemCheck();
@@ -62,7 +61,7 @@ public class BinaryTrees
 
     public static void main(String[] args) {
         Date d1 = new Date();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 100; i++)
             runBinaryTrees();
         Date d2 = new Date();
         System.out.println("Java Time: " + ((d2.getTime() - d1.getTime()) / 1000.0) +

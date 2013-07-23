@@ -56,14 +56,13 @@ void runBinaryTrees() {
         int stretchDepth = maxDepth + 1;
         
         TreeNode *tn = bottomUpTree(0,stretchDepth);
-        check = tn->itemCheck();
+        check += tn->itemCheck();
         delete tn;
         
         TreeNode *longLivedTree = bottomUpTree(0,maxDepth);
         for (int depth=minDepth; depth<=maxDepth; depth+=2){
             int iterations = 1 << (maxDepth - depth + minDepth);
 
-            check = 0;
             for (int i=1; i<=iterations; i++){
                 TreeNode *t1 = bottomUpTree(i,depth);
                 check += t1->itemCheck();
@@ -81,7 +80,7 @@ void runBinaryTrees() {
 
 int main() {
     double d1 = DoubleTime();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 100; i++) {
         runBinaryTrees();
     }
     double d2 = DoubleTime();

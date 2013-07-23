@@ -57,7 +57,7 @@ function runSpectralNorm() {
 function main() {
     var count = 0;
     var d1 = new Date();
-    for (var i = 0; i < 2000; i++)
+    for (var i = 0; i < 500; i++)
         count += runSpectralNorm();
     var d2 = new Date();
     print("JS Time: " + ((d2 - d1) / 1000.0) + " (count=" + count + ")");

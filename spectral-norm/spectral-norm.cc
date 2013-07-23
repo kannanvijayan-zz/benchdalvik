@@ -76,7 +76,7 @@ double runSpectralNorm() {
 int main() {
     double count = 0;
     double d1 = DoubleTime();
-    for (int i = 0; i < 2000; i++) {
+    for (int i = 0; i < 500; i++) {
         count += runSpectralNorm();
     }
     double d2 = DoubleTime();

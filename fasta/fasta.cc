@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -34,7 +34,7 @@ const char *ALU =
   "AGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCC"
   "AGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA";
 
-typedef std::map<char, double> Table;
+typedef std::unordered_map<char, double> Table;
 static Table *IUB = NULL;
 static void InitializeIUB() {
     IUB = new Table();
@@ -125,7 +125,7 @@ int main() {
     InitializeIUB();
     InitializeHomoSap();
     double d1 = DoubleTime();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10; i++) {
         runFasta();
     }
     double d2 = DoubleTime();
