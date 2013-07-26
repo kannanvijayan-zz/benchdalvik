@@ -12,7 +12,7 @@ double DoubleTime() {
 }
 
 double A(int i, int j) {
-  return ((double)1.0)/((i+j)*(i+j+1)/2+i+1);
+  return ((double)1.0)/((i+j)*(i+j+1)/((double)2+i+1));
 }
 
 void Au(double *u, double *v, int length) {

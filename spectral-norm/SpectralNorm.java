@@ -4,7 +4,7 @@ import java.util.Date;
 public class SpectralNorm {
 
     static double A(int i, int j) {
-      return ((double)1)/((i+j)*(i+j+1)/2+i+1);
+      return ((double)1)/((i+j)*(i+j+1)/((double)2+i+1));
     }
 
     static void Au(double[] u, double[] v) {
