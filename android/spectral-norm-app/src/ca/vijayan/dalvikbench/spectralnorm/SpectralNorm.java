@@ -6,11 +6,11 @@ import java.util.Date;
 public class SpectralNorm {
 
     static double A(int i, int j) {
-      return ((double)1)/((i+j)*(i+j+1)/((double)2+i+1));
+      return 1/((i+j)*(i+j+1)/((double)(2+i+1)));
     }
 
     static void Au(double[] u, double[] v) {
-      for (int i=0; i<u.length; ++i) {
+      for (int i=0; i<v.length; ++i) {
         double t = 0;
         for (int j=0; j<u.length; ++j)
           t += A(i,j) * u[j];
@@ -19,7 +19,7 @@ public class SpectralNorm {
     }
 
     static void Atu(double[] u, double[] v) {
-      for (int i=0; i<u.length; ++i) {
+      for (int i=0; i<v.length; ++i) {
         double t = 0;
         for (int j=0; j<u.length; ++j)
           t += A(j,i) * u[j];
