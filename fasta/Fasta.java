@@ -1,5 +1,6 @@
 
 import java.util.Date;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -52,13 +53,13 @@ public class Fasta
     }
 
     static void makeCumulative(HashMap<Character, Double> table) {
-        char last = '\u0000';
-        for (Character ch : table.keySet()) {
-            char c = ch.charValue();
-            if (last != '\u0000') {
-                table.put(c, table.get(c).doubleValue() + table.get(last).doubleValue());
+        Map.Entry<Character, Double> last = null;
+        for (Map.Entry<Character, Double> ent : table.entrySet()) {
+            char c = ent.getKey().charValue();
+            if (last != null) {
+                ent.setValue(ent.getValue().doubleValue() + last.getValue().doubleValue());
             }
-            last = c;
+            last = ent;
         }
     }
 
@@ -83,14 +84,13 @@ public class Fasta
 
     static void fastaRandom(int n, HashMap<Character, Double> table) {
         char[] line = new char[60];
-        makeCumulative(table);
         while (n>0) {
             if (n<line.length) line = new char[n];
             for (int i=0; i<line.length; i++) {
                 double r = rand(1);
-                for (Character ch : table.keySet()) {
-                    char c = ch.charValue();
-                    if (r < table.get(c).doubleValue()) {
+                for (Map.Entry<Character, Double> ent : table.entrySet()) {
+                    char c = ent.getKey().charValue();
+                    if (r < ent.getValue().doubleValue()) {
                         line[i] = c;
                         break;
                     }
@@ -111,6 +111,8 @@ public class Fasta
     static public void main(String[] args) {
         InitializeIUB();
         InitializeHomoSap();
+        makeCumulative(IUB);
+        makeCumulative(HomoSap);
         Date d1 = new Date();
         for (int i = 0; i < 10; i++)
             runFasta();

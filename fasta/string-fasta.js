@@ -59,7 +59,6 @@ function fastaRepeat(n, seq) {
 
 function fastaRandom(n, table) {
   var line = new Array(60);
-  makeCumulative(table);
   while (n>0) {
     if (n<line.length) line = new Array(n);
     for (var i=0; i<line.length; i++) {
@@ -86,6 +85,8 @@ function runFasta() {
 }
 
 function main() {
+    makeCumulative(IUB);
+    makeCumulative(HomoSap);
     var d1 = Date.now();
     for (var i = 0; i < 10; i++) {
         runFasta();

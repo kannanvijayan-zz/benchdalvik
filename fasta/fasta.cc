@@ -96,7 +96,6 @@ void fastaRepeat(int n, std::string seq) {
 
 void fastaRandom(int n, Table *table) {
     std::vector<char> line(60);
-    makeCumulative(table);
     while (n>0) {
         if (n<line.size()) line = std::vector<char>(n);
         for (int i=0; i<line.size(); i++) {
@@ -124,6 +123,8 @@ void runFasta() {
 int main() {
     InitializeIUB();
     InitializeHomoSap();
+    makeCumulative(IUB);
+    makeCumulative(HomoSap);
     double d1 = DoubleTime();
     for (int i = 0; i < 10; i++) {
         runFasta();

@@ -54,6 +54,7 @@ function main() {
     var d1 = Date.now();
     for (var i = 0; i < 100; i++)
         runBinaryTrees();
+    gc();
     var d2 = Date.now();
     print("JS time: " + ((d2 - d1)/1000.0) + " (count=" + check + ")");
 }
