@@ -8,13 +8,15 @@ import java.util.Date;
 public class PartialSums
 {
     static double a2 = 0.0, a3 = 0.0, a4 = 0.0, a5 = 0.0, a6 = 0.0, a7 = 0.0, a8 = 0.0, a9 = 0.0;
-    static double k3 = 0.0, sk = 0.0, ck = 0.0;
+    static int k3 = 0;
+    static double sk = 0.0, ck = 0.0;
 
     public static double partial(int n) {
         double a1 = (a2 = a3 = a4 = a5 = a6 = a7 = a8 = a9 = 0.0);
         double twothirds = 2.0/3.0;
         double alt = -1.0;
-        double k2 = (k3 = sk = ck = 0.0);
+        int k2 = (k3 = 0);
+        double sk = (ck = 0.0);
         
         for (int k = 1; k <= n; k++){
             k2 = k*k;
