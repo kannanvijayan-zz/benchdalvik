@@ -3,6 +3,7 @@
 // contributed by Isaac Gouy
 // ported to C by Kannan Vijayan
 
+#include <jni.h>
 #include <sys/time.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -53,13 +54,17 @@ double run_partial() {
     return result;
 }
 
-int main() {
+extern "C" {
+jdouble
+Java_ca_vijayan_dalvikbench_native_1partialsums_PartialSumsApp_runBench( JNIEnv* env,
+                                                  jobject thiz )
+{
     double count = 0;
     double d1 = DoubleTime();
     for (int i = 0; i < 100; i++) {
         count += run_partial();
     }
     double d2 = DoubleTime();
-    fprintf(stderr, "CXX Time: %lf  (count=%lf)\n", (d2 - d1), count);
-    return 0;
+    return (jdouble)(d2-d1);
+}
 }
